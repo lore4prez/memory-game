@@ -1,4 +1,4 @@
-#root {
+/* #root {
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
@@ -39,4 +39,20 @@
 
 .read-the-docs {
   color: #888;
+} */
+
+.card-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  /* width: 100vh; */
+  /* grid-gap: 10px; */
+  row-gap: 20px;
+  /* justify-items: center; */
+}
+
+.card .front {
+  width: 180px;
+  height: 180px;
+  border: 2px solid rgb(76, 94, 139);
+  border-radius: 3%;
 }
