@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
 import './App.css'
-
-import { Header } from './components/Header'
+// import { Header } from './components/Header'
 
 // List of giphy gif IDs to get the image urls through api calls
 const gifIdList = 
@@ -15,12 +14,12 @@ const gifIdList =
   ];
 
 function App() {
-  // To hold the 6 types of cards (12 total) 
-  const [cards, setcards] = useState([]);
+  const [cards, setcards] = useState([]); // To hold the 6 types of cards (12 total)
+  const [turns, setturns] = useState(0); // Scoreboard scoring
 
   // API calls to get the gif' image urls and storing it temporarily in gifImgList
   useEffect(() => {
-    let gifImgList = [];
+    let gifImgList = []; // To hold the url of 6 cards
     let doubleList = []; // A temporary var to hold the set of 6 cards twice
 
     // Gets the original url of the gifs through the gif IDs stored in gifIdList
@@ -56,17 +55,32 @@ function App() {
     console.log("Updated cards:", cards);
   }, [cards]); // This useEffect will run every time `cards` updates
 
-  // function handleClick() {
+  function shuffleCards() {
+    // Randomize the location of each card and add key id to each card
+    const shuffledCards = [...cards]
+      .sort(() => Math.random() - 0.5)
+      .map((card) => ({ ...card, id : Math.random() }));
 
-  // }
+    setcards(shuffledCards);
+    setturns(0);
+  }
 
   return (
     <>
-      <Header></Header>
-      {cards.map((item, index) => (
-        <img key={index} src={item.src}/>
-      ))}
-      {/* <button onClick={}>Reset</button> */}
+      <h1>Match the Pusheens</h1>
+      <h2>Turns: {turns}</h2>
+      <button onClick={shuffleCards}>Reset</button>
+
+      <h1>Cards</h1>
+      <div className="card-grid">
+        {cards.map((item) => (
+          <div className="card" key={item.id}>
+            <img className="front" src={item.src}/>
+            {/*Add a back side image as well (later) */}
+          </div>
+        ))}
+      </div>
+      
     </>
   )
 }
