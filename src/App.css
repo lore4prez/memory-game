@@ -49,10 +49,3 @@
   row-gap: 20px;
   /* justify-items: center; */
 }
-
-.card .front {
-  width: 180px;
-  height: 180px;
-  border: 2px solid rgb(76, 94, 139);
-  border-radius: 3%;
-}

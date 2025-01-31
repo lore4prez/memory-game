@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import './App.css'
+import Card from './components/Card'
 // import { Header } from './components/Header'
 
 // List of giphy gif IDs to get the image urls through api calls
@@ -74,10 +75,7 @@ function App() {
       <h1>Cards</h1>
       <div className="card-grid">
         {cards.map((item) => (
-          <div className="card" key={item.id}>
-            <img className="front" src={item.src}/>
-            {/*Add a back side image as well (later) */}
-          </div>
+          <Card key={item.id} item={item}/>
         ))}
       </div>
       
