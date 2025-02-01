@@ -101,9 +101,9 @@ function App() {
       else {
         // console.log("the cards do not match");
       }
-      resetTurns();
+      setTimeout(() => resetTurns(), 800);
     }
-  }, [choiceTwo])
+  }, [choiceOne, choiceTwo])
 
   // console.log(cards);
   // console.log("updated cards:", JSON.stringify(cards, null, 2))
