@@ -21,6 +21,7 @@ function App() {
   const [choiceOne, setchoiceOne] = useState(null) // To hold the first card that the user clicks
   const [choiceTwo, setchoiceTwo] = useState(null) // To hold the second card that the user clicks
 
+
   // API calls to get the gif' image urls and storing it temporarily in gifImgList
   useEffect(() => {
     let gifImgList = []; // To hold the url of 6 cards
@@ -28,7 +29,7 @@ function App() {
 
     // Gets the original url of the gifs through the gif IDs stored in gifIdList
     async function fetchUrl(gifID) {
-      const response = await fetch(`https://api.giphy.com/v1/gifs/${gifID}?api_key=FEcNku8OuTdra1gngJXzmwn8H6vNxdz7`);
+      const response = await fetch(`https://api.giphy.com/v1/gifs/${gifID}?api_key=fma4CtXs2hqrCJ2wG3zlNpm8qIxHTs1V`);
       const textData = await response.json();
       return textData.data.images.original.url;
     }
@@ -45,7 +46,7 @@ function App() {
       After all the urls are fetched, copy the contents of gifImgList twice to 
       have a set of 6 cards (two of the same kind) 
       */
-      doubleList = [...gifImgList, ...gifImgList];
+      doubleList = [...gifImgList, ...gifImgList].map( (card) => ({ ...card, id : Math.random(), matched : false}));
       setcards(doubleList);
 
     }
@@ -54,11 +55,11 @@ function App() {
 
   }, []);
 
-  // Log the cards state when it changes
-  useEffect(() => {
-    console.log("Updated cards:", cards);
-  }, [cards]); // This useEffect will run every time `cards` updates
+  // useEffect( () => {
+  //   console.log("updated cards:", JSON.stringify(cards, null, 2));
+  // }, [cards])
 
+  // Shuffle cards' location
   function shuffleCards() {
     // Randomize the location of each card and add key id to each card
     const shuffledCards = [...cards]
@@ -69,6 +70,44 @@ function App() {
     setturns(0);
   }
 
+  // Handle a choice (choice one or choice two)
+  const handleChoice = (card) => {
+    choiceOne ? setchoiceTwo(card) : setchoiceOne(card);
+    // console.log(card.src);
+  }
+
+  // Reset the state variables once two cards have been chosen
+  const resetTurns = () => {
+    setchoiceOne(null);
+    setchoiceTwo(null);
+    setturns((currTurn) => (currTurn + 1));
+  }
+
+  // Compare the choice one and choice two to see if the cards match through their src property
+  useEffect( () => {
+    // Check if they are not null (because useEffect is called when it first mounts and when dependency changes)
+    if (choiceOne && choiceTwo) {
+      if (choiceOne.src === choiceTwo.src) {
+        // console.log("the cards match!");
+        setcards(currCards => {
+          return currCards.map((card) => {
+            if (card.src === choiceOne.src) 
+              return { ...card, matched: true};
+            else 
+              return card;
+          })
+        })
+      }
+      else {
+        // console.log("the cards do not match");
+      }
+      resetTurns();
+    }
+  }, [choiceTwo])
+
+  // console.log(cards);
+  // console.log("updated cards:", JSON.stringify(cards, null, 2))
+
   return (
     <>
       <h1>Match the Pusheens</h1>
@@ -78,7 +117,12 @@ function App() {
       <h1>Cards</h1>
       <div className="card-grid">
         {cards.map((item) => (
-          <Card key={item.id} item={item}/>
+          <Card 
+            key={item.id} 
+            item={item} 
+            handleChoice={handleChoice}
+            flipped={item === choiceOne || item === choiceTwo || item.matched}
+          />
         ))}
       </div>
       

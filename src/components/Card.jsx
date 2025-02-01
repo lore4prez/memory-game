@@ -1,10 +1,21 @@
 import '../styles/Card.css';
 
-function Card( {item} ) {
+function Card( {item, handleChoice, flipped} ) {
+    const handleClick = () => {
+        handleChoice(item);
+    }
+
     return (
         <div className="card">
-            <img className="front" src={item.src} alt="card front"/>
-            <img className="back" src="../../public/rand-pusheen.png" alt="card back"/>
+            <div className={flipped ? "flipped" : ""}>
+                <img className="front" src={item.src} alt="card front"/>
+                <img
+                    className="back"
+                    src="../../rand-pusheen.png"
+                    alt="card back"
+                    onClick={handleClick}
+                />
+            </div>
         </div>
     )
 }
