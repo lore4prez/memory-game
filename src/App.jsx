@@ -18,6 +18,9 @@ function App() {
   const [cards, setcards] = useState([]); // To hold the 6 types of cards (12 total)
   const [turns, setturns] = useState(0); // Scoreboard scoring
 
+  const [choiceOne, setchoiceOne] = useState(null) // To hold the first card that the user clicks
+  const [choiceTwo, setchoiceTwo] = useState(null) // To hold the second card that the user clicks
+
   // API calls to get the gif' image urls and storing it temporarily in gifImgList
   useEffect(() => {
     let gifImgList = []; // To hold the url of 6 cards

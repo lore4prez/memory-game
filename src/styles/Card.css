@@ -1,4 +1,5 @@
-.card .front {
+.card .front, .card .back {
+    /* display:block; */
     width: 150px;
     height: 150px;
     border: 2px solid rgb(76, 94, 139);
