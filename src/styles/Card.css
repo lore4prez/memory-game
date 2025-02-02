@@ -48,8 +48,8 @@
   }
 }
 
-/* Mobile */
-@media only screen and (max-width: 1440px) {
+/* Small Laptops */
+@media only screen and (min-width: 1080px) and (max-width: 1440px) {
   .card .front, .card .back {
     width: 100px;
     height: 100px;
