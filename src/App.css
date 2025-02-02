@@ -63,3 +63,11 @@ body {
   display: flex;
   justify-self: end;
 }
+
+/* Mobile */
+@media only screen and (max-width: 768px) {
+  .card-grid {
+    width: 365px;
+    row-gap: 15px;
+  }
+}

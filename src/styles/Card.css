@@ -40,3 +40,11 @@
   transition-delay: 0s;
 }
 
+/* Mobile */
+@media only screen and (max-width: 768px) {
+  .card .front, .card .back {
+    width: 80px;
+    height: 80px;
+  }
+}
+
