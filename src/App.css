@@ -17,7 +17,7 @@ body {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  margin-bottom: 100px;
+  margin-bottom: 20px;
 }
 
 .game-title {
@@ -45,6 +45,7 @@ body {
   display: block;
   justify-self: center;
   background-color: #765d5d;
+  color: white;
   /* margin: 20px auto; */
 }
 
@@ -68,6 +69,17 @@ body {
 @media only screen and (max-width: 768px) {
   .card-grid {
     width: 365px;
+    row-gap: 15px;
+  }
+  .new-game-btn {
+    width: 120px;
+  }
+}
+
+/* Small Desktops */
+@media only screen and (max-width: 1440px) {
+  .card-grid {
+    width: 445px;
     row-gap: 15px;
   }
   .new-game-btn {
