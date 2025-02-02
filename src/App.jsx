@@ -15,6 +15,7 @@ const gifIdList =
   ];
 
 function App() {
+  const [origCards, setorigCards] = useState([]); // To keep the original set of cards (useful when resetting the board)
   const [cards, setcards] = useState([]); // To hold the 6 types of cards (12 total)
   const [turns, setturns] = useState(0); // Scoreboard scoring
 
@@ -50,7 +51,7 @@ function App() {
       */
       doubleList = [...gifImgList, ...gifImgList].map( (card) => ({ ...card, id : Math.random(), matched : false}));
       setcards(doubleList);
-
+      setorigCards(doubleList);
     }
     // Call the getGifImg to store the urls as objects
     getGifImg();
@@ -64,7 +65,7 @@ function App() {
   // When user clicks new game, shuffle cards' location and reset the choices
   function shuffleCards() {
     // Randomize the location of each card and add key id to each card
-    const shuffledCards = [...cards]
+    const shuffledCards = [...origCards]
       .sort(() => Math.random() - 0.5)
       .map((card) => ({ ...card, id : Math.random() }));
 
