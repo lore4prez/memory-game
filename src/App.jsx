@@ -49,7 +49,7 @@ function App() {
       After all the urls are fetched, copy the contents of gifImgList twice to 
       have a set of 6 cards (two of the same kind) 
       */
-      doubleList = [...gifImgList, ...gifImgList].map( (card) => ({ ...card, id : Math.random(), matched : false}));
+      doubleList = [...gifImgList, ...gifImgList].sort(() => Math.random() - 0.5).map( (card) => ({ ...card, id : Math.random(), matched : false}));
       setcards(doubleList);
       setorigCards(doubleList);
     }
