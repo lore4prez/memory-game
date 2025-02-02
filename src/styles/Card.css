@@ -10,11 +10,33 @@
     border-radius: 3%;
 }
 
+
+/*  The transition property in .card .front 'transition: all ease-in 0.2s' is also applied to the .front in the .flipped .front,
+    So, technically, .flipped .front also has a transition: all ease-in 0.2s unless overwritten */
 .card .front {
-  transform: rotateY(90deg);
   position: absolute;
+  transform: rotateY(90deg);
+  transition: all ease-in 0.2s;
+  /* transition-property: transform;
+  transition-duration: 0.2s;
+  transition-timing-function: ease-in; */
+}
+.flipped .front {
+  transform: rotateY(0deg); 
+  /* transition: all ease-out 0.2s; */
+  transition-delay: 0.2s;
 }
 
-.flipped .front {
-  transform: rotateY(0deg);
+.card .back {
+  transform: rotate(0deg);
+  transition: all 0.2s ease-in 0.2s;
+  /* transition-property: transform;
+  transition-duration: 0.2s;
+  transition-timing-function: ease-in;
+  transition-delay: 0.2s; */
 }
+.flipped .back {
+  transform: rotateY(90deg);
+  transition-delay: 0s;
+}
+

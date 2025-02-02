@@ -29,7 +29,7 @@ function App() {
 
     // Gets the original url of the gifs through the gif IDs stored in gifIdList
     async function fetchUrl(gifID) {
-      const response = await fetch(`https://api.giphy.com/v1/gifs/${gifID}?api_key=fma4CtXs2hqrCJ2wG3zlNpm8qIxHTs1V`);
+      const response = await fetch(`https://api.giphy.com/v1/gifs/${gifID}?api_key=q2ij4V3ZvWXIItzN5JQE5toZ8SbEbHAP`);
       const textData = await response.json();
       return textData.data.images.original.url;
     }
