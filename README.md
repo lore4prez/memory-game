@@ -2,7 +2,7 @@
 This is a personal project to practice learning React. A memory card type of game that uses GIPHY API for its images. To win, match the same image until all of the cards have been matched. 
 
 # Link to play
-memory-game-nu-tawny.vercel.app
+https://memory-game-nu-tawny.vercel.app
 
 ## First Look
 <img src="./public/firstlook.png"/>
