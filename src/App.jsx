@@ -21,6 +21,8 @@ function App() {
   const [choiceOne, setchoiceOne] = useState(null) // To hold the first card that the user clicks
   const [choiceTwo, setchoiceTwo] = useState(null) // To hold the second card that the user clicks
 
+  const [disabled, setdisabled] = useState(false) // To stop the user from clicking other cards while two cards are being compared
+
 
   // API calls to get the gif' image urls and storing it temporarily in gifImgList
   useEffect(() => {
@@ -59,7 +61,7 @@ function App() {
   //   console.log("updated cards:", JSON.stringify(cards, null, 2));
   // }, [cards])
 
-  // Shuffle cards' location
+  // When user clicks new game, shuffle cards' location and reset the choices
   function shuffleCards() {
     // Randomize the location of each card and add key id to each card
     const shuffledCards = [...cards]
@@ -67,6 +69,8 @@ function App() {
       .map((card) => ({ ...card, id : Math.random() }));
 
     setcards(shuffledCards);
+    setchoiceOne(null);
+    setchoiceTwo(null);
     setturns(0);
   }
 
@@ -81,12 +85,16 @@ function App() {
     setchoiceOne(null);
     setchoiceTwo(null);
     setturns((currTurn) => (currTurn + 1));
+    // Allow other cards to be clicked again after the two cards have been compared
+    setdisabled(false);
   }
 
   // Compare the choice one and choice two to see if the cards match through their src property
   useEffect( () => {
     // Check if they are not null (because useEffect is called when it first mounts and when dependency changes)
     if (choiceOne && choiceTwo) {
+      // Disable other cards while the two chosen cards are being compared
+      setdisabled(true);
       if (choiceOne.src === choiceTwo.src) {
         // console.log("the cards match!");
         setcards(currCards => {
@@ -98,9 +106,8 @@ function App() {
           })
         })
       }
-      else {
-        // console.log("the cards do not match");
-      }
+
+      // Before the choices are reset, give the player enough time to see the cards (0.8 sec)
       setTimeout(() => resetTurns(), 800);
     }
   }, [choiceOne, choiceTwo])
@@ -112,7 +119,7 @@ function App() {
     <>
       <h1>Match the Pusheens</h1>
       <h2>Turns: {turns}</h2>
-      <button onClick={shuffleCards}>Reset</button>
+      <button onClick={shuffleCards}>New Game</button>
 
       <h1>Cards</h1>
       <div className="card-grid">
@@ -122,6 +129,7 @@ function App() {
             item={item} 
             handleChoice={handleChoice}
             flipped={item === choiceOne || item === choiceTwo || item.matched}
+            disabled={disabled}
           />
         ))}
       </div>

@@ -1,8 +1,9 @@
 import '../styles/Card.css';
 
-function Card( {item, handleChoice, flipped} ) {
+function Card( {item, handleChoice, flipped, disabled} ) {
     const handleClick = () => {
-        handleChoice(item);
+        if (!disabled)
+            handleChoice(item);
     }
 
     return (
