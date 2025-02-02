@@ -70,4 +70,7 @@ body {
     width: 365px;
     row-gap: 15px;
   }
+  .new-game-btn {
+    width: 120px;
+  }
 }
