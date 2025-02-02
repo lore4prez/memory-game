@@ -1,6 +1,10 @@
 # memory-game
 This is a personal project to practice learning React. A memory card type of game that uses GIPHY API for its images. To win, match the same image until all of the cards have been matched. 
 
+## First Look
+<img src="./public/firstlook.png"/>
+<img src="./public/midgame.png" />
+
 # future plans for improvements
 - Add a timer to how long each round takes to complete
 - Add multiple levels of difficulty: levels 1 - max n
