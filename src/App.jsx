@@ -135,6 +135,7 @@ function App() {
           />
         ))}
       </div>
+      <img className="giphy-logo" src="../public/PoweredBy_200px-White_HorizText.png" alt="GIPHY logo"/>
       
     </>
   )

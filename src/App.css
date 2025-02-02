@@ -56,4 +56,10 @@ body {
   row-gap: 20px;
   justify-items: center;
   justify-self: center;
+  margin: 20px auto;
+}
+
+.giphy-logo {
+  display: flex;
+  justify-self: end;
 }
