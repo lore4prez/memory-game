@@ -10,6 +10,7 @@ memory-game-nu-tawny.vercel.app
 <img src="./public/pusheen-game.gif" width="100%" height="100%"/>
 
 # future plans for improvements
+- Make it responsive (only designed for desktop currently)
 - Add a timer to how long each round takes to complete
 - Add multiple levels of difficulty: levels 1 - max n
 - Add two modes of playing: singleplayer or two players (maybe multiplayer online using WebSocket)
