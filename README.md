@@ -4,7 +4,7 @@ This is a personal project to practice learning React. A memory card type of gam
 ## First Look
 <img src="./public/firstlook.png"/>
 <img src="./public/midgame.png" />
-<img src="./public/pusheen-game.gif"/>
+<img src="./public/pusheen-game.gif" width="100%" height="100%"/>
 
 # future plans for improvements
 - Add a timer to how long each round takes to complete
