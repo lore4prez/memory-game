@@ -32,7 +32,7 @@ function App() {
 
     // Gets the original url of the gifs through the gif IDs stored in gifIdList
     async function fetchUrl(gifID) {
-      const response = await fetch(`https://api.giphy.com/v1/gifs/${gifID}?api_key=q2ij4V3ZvWXIItzN5JQE5toZ8SbEbHAP`);
+      const response = await fetch(`https://api.giphy.com/v1/gifs/${gifID}?api_key=fma4CtXs2hqrCJ2wG3zlNpm8qIxHTs1V`);
       const textData = await response.json();
       return textData.data.images.original.url;
     }
@@ -118,11 +118,12 @@ function App() {
 
   return (
     <>
-      <h1>Match the Pusheens</h1>
-      <h2>Turns: {turns}</h2>
-      <button onClick={shuffleCards}>New Game</button>
+      <h1 className="game-title">Match the Pusheens</h1>
+      <div className="opt-group">
+        <h2 className="turns">Turns: {turns}</h2>
+        <button className="new-game-btn" onClick={shuffleCards}>New Game</button>
+      </div>
 
-      <h1>Cards</h1>
       <div className="card-grid">
         {cards.map((item) => (
           <Card 
